@@ -12,6 +12,7 @@ const Register = () => {
   const { onChange, onSubmit, values } = useForm(registerUser, {
     username: "",
     email: "",
+    phone: "",
     password: "",
     confirmPassword: "",
   });
@@ -53,11 +54,23 @@ const Register = () => {
             <label>Email</label>
             <input
               className="registerInput"
-              placeholder="Email or Phone"
+              placeholder="Email"
               type="email"
               required
               name="email"
               value={values.email}
+              onChange={onChange}
+            />
+          </div>
+           <div className="inputDiv">
+            <label>Phone</label>
+            <input
+              className="registerInput"
+              placeholder="Phone"
+              type="text"
+              required
+              name="phone"
+              value={values.phone}
               onChange={onChange}
             />
           </div>
@@ -115,6 +128,7 @@ const REGISTER_USER = gql`
   mutation register(
     $username: String!
     $email: String!
+    $phone: String!
     $password: String!
     $confirmPassword: String!
   ) {
@@ -122,12 +136,14 @@ const REGISTER_USER = gql`
       registerInput: {
         username: $username
         email: $email
+        phone: $phone
         password: $password
         confirmPassword: $confirmPassword
       }
     ) {
       id
       email
+      phone
       username
       createdAt
       token

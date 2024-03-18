@@ -7,6 +7,7 @@ type User {
   token: String!
   username: String!
   createdAt: String!
+  phone: String!
 }
 
 input RegisterInput {
@@ -14,6 +15,7 @@ input RegisterInput {
   password: String!
   confirmPassword: String!
   email: String!
+  phone: String!
 }
 
 type Query {
