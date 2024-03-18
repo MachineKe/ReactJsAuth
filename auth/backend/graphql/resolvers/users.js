@@ -56,7 +56,7 @@ module.exports = {
       const { valid, errors } = validateRegisterInput(
         username,
         email,
-        
+        phone,
         password,
         confirmPassword
       )
@@ -73,15 +73,32 @@ module.exports = {
           },
         })
       }
+      const emailfield = await User.findOne({ email })
+      if (emailfield) {
+         throw new UserInputError("Email in use", {
+          errors: {
+            email: "This email is registered"
+          },
+        })
+      }
+     const phonefield = await User.findOne({ phone })
+      if (phonefield) {
+         throw new UserInputError("Phone number in use", {
+          errors: {
+            phone: "This phone is registered"
+          },
+        })
+      }
+
       // hash password and create an auth token
       password = await bcrypt.hash(password, 12)
       
       const newUser = new User({
         email,
+        phone,
         username,
         password,
         createdAt: new Date().toISOString(),
-        phone,
       })
 
       const res = await newUser.save()

@@ -66,7 +66,7 @@ const Register = () => {
             <label>Phone</label>
             <input
               className="registerInput"
-              placeholder="Phone"
+              placeholder="+254"
               type="text"
               required
               name="phone"

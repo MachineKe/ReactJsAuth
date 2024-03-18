@@ -5,6 +5,7 @@ query {
   getUsers {
     id
     username
+    phone
     email
     createdAt
   }
