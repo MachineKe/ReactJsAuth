@@ -20,7 +20,7 @@ loadErrorMessages();
 function App() {
 
    const httpLink = createHttpLink({
-    uri: 'http://localhost:5000/',
+    uri: 'https://reactjsauth.onrender.com/',
    });
   
   const authLink = setContext(()=>{
