@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 import { useForm } from "./util/Hooks";
 import { AuthContext } from "./Context/auth";
 
-const Login = (props) => {
+const Login = () => {
   const context = useContext(AuthContext);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -39,8 +39,8 @@ const Login = (props) => {
         <h1>LOGIN PAGE</h1>
         <hr />
         <form action="" onSubmit={onSubmit}>
-          <div className="usernameDiv">
-            <label htmlFor="">Username</label>
+          <div className="inputDiv">
+            <label>Username</label>
             <input
               className="loginInput"
               placeholder="Username"
@@ -49,10 +49,9 @@ const Login = (props) => {
               name="username"
               value={values.username}
               onChange={onChange}
-            ></input>
+            />
           </div>
-
-          <div className="passwordDiv">
+          <div className="inputDiv">
             <label>Password</label>
             <input
               className="loginInput"
@@ -62,23 +61,22 @@ const Login = (props) => {
               name="password"
               value={values.password}
               onChange={onChange}
-            ></input>
+            />
           </div>
-
-          <div className="loginDiv">
-            <button className="login" type="submit"> {/* Change here */}
+          <div className="buttonDiv">
+            <button className="loginButton" type="submit">
               Login
             </button>
           </div>
           <div className="end">
-            <p className="confirm">Don't Have an account?</p>
+            <p className="confirm">Don't have an account?</p>
             <Link to="/register" className="link">
               Register
             </Link>
           </div>
         </form>
         {Object.keys(errors).length > 0 && (
-          <div>
+          <div className="errorDiv">
             {Object.values(errors).map((value, index) => (
               <ul key={index}>
                 <li>{value}</li>
@@ -104,3 +102,4 @@ const LOGIN_USER = gql`
 `;
 
 export default Login;
+

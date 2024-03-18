@@ -1,29 +1,24 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import {useForm} from './util/Hooks'
-
+import { useForm } from "./util/Hooks";
 import { AuthContext } from "./Context/auth";
+
 const Register = () => {
-
-const context = useContext(AuthContext)
-
+  const context = useContext(AuthContext);
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
-
-
-const {onChange, onSubmit, values} = useForm(registerUser, {
- username: "",
+  const { onChange, onSubmit, values } = useForm(registerUser, {
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
-})
-
+  });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    update(_, {data: {register: userData}}) {
-      context.login(userData)
+    update(_, { data: { register: userData } }) {
+      context.login(userData);
       navigate("/");
     },
     onError(error) {
@@ -32,81 +27,78 @@ const {onChange, onSubmit, values} = useForm(registerUser, {
     variables: values,
   });
 
-  if (loading) {
-    return <h1>Loading ...</h1>;
+  function registerUser() {
+    addUser();
   }
 
-function registerUser() {
-addUser()
-}
   return (
-    <div className="loginContainer">
-      <div className="loginChild">
+    <div className="registerContainer">
+      <div className="registerChild">
         <h1>REGISTRATION PAGE</h1>
         <hr />
         <form action="" onSubmit={onSubmit}>
-          <div className="usernameDiv">
-            <label htmlFor="">Username</label>
+          <div className="inputDiv">
+            <label>Username</label>
             <input
-            className="loginInput"
+              className="registerInput"
               placeholder="Username"
               type="text"
               required
               name="username"
               value={values.username}
               onChange={onChange}
-            ></input>
+            />
           </div>
-          <div className="usernameDiv">
-            <label htmlFor="">Email</label>
+          <div className="inputDiv">
+            <label>Email</label>
             <input
-            className="loginInput"
+              className="registerInput"
               placeholder="Email or Phone"
               type="email"
               required
               name="email"
               value={values.email}
               onChange={onChange}
-            ></input>
+            />
           </div>
-          <div className="passwordDiv">
+          <div className="inputDiv">
             <label>Password</label>
             <input
-            className="loginInput"
+              className="registerInput"
               placeholder="Password"
               type="password"
               required
               name="password"
               value={values.password}
               onChange={onChange}
-            ></input>
+            />
           </div>
-          <div className="passwordDiv">
+          <div className="inputDiv">
             <label>Confirm Password</label>
             <input
-            className="loginInput"
+              className="registerInput"
               placeholder="Confirm Password"
               type="password"
               required
               name="confirmPassword"
               value={values.confirmPassword}
               onChange={onChange}
-            ></input>
+            />
           </div>
-          <div className="loginDiv">
-          <button className="login" type="submit"> {/* Change here */}
+          <div className="buttonDiv">
+            <button className="registerButton" type="submit">
               Register
             </button>
           </div>
           <div className="end">
-            <p className="confirm">Have an account?</p>
+            <p>Have an account?</p>
             <Link to="/" className="link">
               Login
             </Link>
           </div>
         </form>
         {Object.keys(errors).length > 0 && (
-          <div>
+          <div className="errorDiv">
             {Object.values(errors).map((value, index) => (
               <ul key={index}>
                 <li>{value}</li>
