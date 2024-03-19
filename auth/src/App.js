@@ -12,7 +12,7 @@ import { Routes, Route, redirect as Redirect } from "react-router-dom";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 
-
+import About from "./Components/About";
 
 loadDevMessages();
 loadErrorMessages();
@@ -49,7 +49,8 @@ function App() {
             <Routes>
                             <Route path="/" element={<Home/>} />
                             <Route path="/login" element={<Login/>} />
-                            <Route path="/register" element={<Register/>} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/about" element={<About/>}/>
 
             </Routes>
           </ErrorBoundary>

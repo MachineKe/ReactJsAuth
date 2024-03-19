@@ -18,7 +18,7 @@ const Home = () => {
         <div className="container">
           <h1>Venus Project</h1>
           <p>Welcome {user.username}!</p>
-            <Link to="" className="link" onClick={handleLogout}>
+             <Link to="" className="link" onClick={handleLogout}>
               <div className="logo2">
                 <MdOutlineExitToApp />
                 <p className="nameLogo">Logout</p>

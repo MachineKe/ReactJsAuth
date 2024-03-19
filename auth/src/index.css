@@ -53,7 +53,7 @@ p {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #6a0dad; /* Purple */
+  /* background-color: #6a0dad;  */
 }
 
 .registerChild,
@@ -77,7 +77,7 @@ p {
 .inputDiv input[type="text"],
 .inputDiv input[type="email"],
 .inputDiv input[type="password"] {
-  width: 100%;
+  width: 95%;
   padding: 10px;
   border: 1px solid #6a0dad; /* Purple */
   border-radius: 5px;
@@ -120,4 +120,6 @@ p {
 }
 
 
-
+.about {
+  color: red;
+}
