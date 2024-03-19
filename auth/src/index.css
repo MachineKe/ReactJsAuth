@@ -77,7 +77,7 @@ p {
 .inputDiv input[type="text"],
 .inputDiv input[type="email"],
 .inputDiv input[type="password"] {
-  width: 95%;
+  width: 92%;
   padding: 10px;
   border: 1px solid #6a0dad; /* Purple */
   border-radius: 5px;
