@@ -123,3 +123,10 @@ p {
 .about {
   color: red;
 }
+
+.loadingImg {
+width:80px;
+height: 80px;
+margin-top: 200px;
+margin-left: 140px;
+}
